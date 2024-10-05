@@ -1,0 +1,111 @@
+[
+  {
+    "id": 1,
+    "recipeName": "Spaghetti Bolognese",
+    "category": "Main Course",
+    "ingredients": [
+      "200g spaghetti",
+      "100g minced beef",
+      "1 onion",
+      "2 garlic cloves",
+      "400g canned tomatoes",
+      "50g grated Parmesan"
+    ],
+    "instructions": [
+      "Cook spaghetti according to the package instructions.",
+      "In a pan, sauté onions and garlic until softened.",
+      "Add minced beef and cook until browned.",
+      "Stir in canned tomatoes and simmer for 20 minutes.",
+      "Serve with grated Parmesan on top."
+    ],
+    "recipeTime": "30",
+    "servingSuggestion": "Serve with garlic bread and salad.",
+    "image": "https://picsum.photos/501"
+  },
+  {
+    "id": 2,
+    "recipeName": "Chicken Caesar Salad",
+    "category": "Salad",
+    "ingredients": [
+      "200g chicken breast",
+      "100g romaine lettuce",
+      "50g croutons",
+      "30g Parmesan cheese",
+      "Caesar dressing"
+    ],
+    "instructions": [
+      "Grill the chicken breast and slice into strips.",
+      "Toss the lettuce, croutons, and Caesar dressing together.",
+      "Top the salad with chicken and Parmesan cheese."
+    ],
+    "recipeTime": "20",
+    "servingSuggestion": "Serve with a lemon wedge and extra dressing on the side.",
+    "image": "https://picsum.photos/501"
+  },
+  {
+    "id": 3,
+    "recipeName": "Vegetable Stir-Fry",
+    "category": "Vegan",
+    "ingredients": [
+      "100g broccoli",
+      "100g bell peppers",
+      "1 carrot",
+      "1 onion",
+      "2 tablespoons soy sauce",
+      "1 tablespoon olive oil"
+    ],
+    "instructions": [
+      "Chop all vegetables into bite-sized pieces.",
+      "Heat oil in a pan and sauté onions until translucent.",
+      "Add the rest of the vegetables and stir-fry for 10 minutes.",
+      "Pour in soy sauce and cook for another 2 minutes."
+    ],
+    "recipeTime": "15",
+    "servingSuggestion": "Serve with steamed rice or noodles.",
+    "image": "https://picsum.photos/501"
+  },
+  {
+    "id": 4,
+    "recipeName": "Pancakes",
+    "category": "Breakfast",
+    "ingredients": [
+      "200g flour",
+      "2 eggs",
+      "300ml milk",
+      "1 tablespoon sugar",
+      "Butter for frying",
+      "Maple syrup"
+    ],
+    "instructions": [
+      "Whisk together flour, eggs, and milk until smooth.",
+      "Heat butter in a pan and pour in batter to form pancakes.",
+      "Cook each side until golden brown.",
+      "Serve with maple syrup."
+    ],
+    "recipeTime": "25",
+    "servingSuggestion": "Top with fresh berries or banana slices.",
+    "image": "https://picsum.photos/501"
+  },
+  {
+    "id": 5,
+    "recipeName": "Tomato Soup",
+    "category": "Soup",
+    "ingredients": [
+      "500g ripe tomatoes",
+      "1 onion",
+      "2 garlic cloves",
+      "500ml vegetable stock",
+      "1 tablespoon olive oil",
+      "Salt and pepper"
+    ],
+    "instructions": [
+      "Sauté onions and garlic in olive oil until softened.",
+      "Add chopped tomatoes and vegetable stock.",
+      "Simmer for 20 minutes, then blend until smooth.",
+      "Season with salt and pepper to taste."
+    ],
+    "recipeTime": "30",
+    "servingSuggestion": "Serve with a side of crusty bread.",
+    "image": "https://picsum.photos/501"
+  }
+]
