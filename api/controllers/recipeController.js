@@ -1,4 +1,6 @@
-import { readRecipes } from "../model/recipeModel.js";
+import { readRecipes, writeRecipes } from "../model/recipeModel.js";
+import crypto from "crypto";
+import isInValid from "../utils/isInValid.js";
 
 const data = readRecipes();
 
@@ -33,7 +35,73 @@ export const getAllRecipes = (req, res) => {
   });
 };
 
-export const createRecipe = (req, res) => {};
-export const getRecipe = (req, res) => {};
-export const deleteRecipe = (req, res) => {};
-export const updateRecipe = (req, res) => {};
+export const createRecipe = (req, res) => {
+  // 1-) isteğin body bölümünde gelen veriye eriş
+  let newRecipe = req.body;
+  // 2-) veri bütünlüğünü kontrol et
+  if (isInValid(newRecipe)) {
+    return res.status(400).json({
+      message: "Lütfen bütün değerleri tanımlayın",
+    });
+  }
+  // 3-) veriye id ve foto ekle
+  newRecipe = {
+    ...newRecipe,
+    id: crypto.randomUUID(),
+    photo: `https://picsum.photos/seed/${crypto.randomUUID()}/500/500`,
+  };
+
+  // 4-) tarif verisini diziye ekle
+  data.push(newRecipe);
+
+  // 5-) json dosyasını güncelle
+  writeRecipes(data);
+
+  // 6-) cevap gönder
+  res.status(201).json({
+    message: "Yeni tarif oluşturuldu",
+    recipe: newRecipe,
+  });
+};
+
+//
+export const getRecipe = (req, res) => {
+  res.status(200).json({
+    message: "Aradığınız tarif bulundu",
+    found: req.foundRecipe,
+  });
+};
+
+export const deleteRecipe = (req, res) => {
+  // silinecek elemanın sırasını bul
+  const index = data.findIndex((i) => i.id === req.params.id);
+
+  // elemanı diziden kaldır
+  data.splice(index, 1);
+
+  // json dosyasını güncelle
+  writeRecipes(data);
+
+  //cevap gönder
+  res.status(204).json({});
+};
+
+export const updateRecipe = (req, res) => {
+  // eski tarif nesnesini güncelle
+  const updated = { ...req.foundRecipe, ...req.body };
+
+  // güncellenecek elemanın sırasını bul
+  const index = data.findIndex((i) => i.id === req.params.id);
+
+  // diziyi güncelle
+  data.splice(index, 1, updated);
+
+  // json dosyasını güncelle
+  writeRecipes(data);
+
+  // cevap gönder
+  res.status(200).json({
+    message: "Tarif başarıyla güncellendi",
+    recipe: updated,
+  });
+};
