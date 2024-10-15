@@ -14,7 +14,7 @@ const controlId = (req, res, next) => {
   }
 
   //req nesnesi içerisine bulunan ekle
-  req.foundRecipe = found
+  req.foundRecipe = found;
 
   // sorun yoksa sonraki adıma devam et
   next();

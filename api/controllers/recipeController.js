@@ -1,9 +1,9 @@
 import { readRecipes, writeRecipes } from "../model/recipeModel.js";
-import crypto from "crypto";
 import isInValid from "../utils/isInValid.js";
+import crypto from "crypto";
 
 const data = readRecipes();
-
+// console.log(data)
 export const getAllRecipes = (req, res) => {
   // tarif verisinin kopyası
   let recipes = [...data];
@@ -37,10 +37,12 @@ export const getAllRecipes = (req, res) => {
 
 export const createRecipe = (req, res) => {
   // 1-) isteğin body bölümünde gelen veriye eriş
+  console.log("BURADAYIM");
   let newRecipe = req.body;
   // 2-) veri bütünlüğünü kontrol et
+
   if (isInValid(newRecipe)) {
-    return res.status(400).json({
+    return res.status(404).json({
       message: "Lütfen bütün değerleri tanımlayın",
     });
   }
@@ -48,7 +50,7 @@ export const createRecipe = (req, res) => {
   newRecipe = {
     ...newRecipe,
     id: crypto.randomUUID(),
-    photo: `https://picsum.photos/seed/${crypto.randomUUID()}/500/500`,
+    image: `https://picsum.photos/seed/${crypto.randomUUID()}/500/500`,
   };
 
   // 4-) tarif verisini diziye ekle
@@ -64,7 +66,6 @@ export const createRecipe = (req, res) => {
   });
 };
 
-//
 export const getRecipe = (req, res) => {
   res.status(200).json({
     message: "Aradığınız tarif bulundu",
@@ -89,7 +90,6 @@ export const deleteRecipe = (req, res) => {
 export const updateRecipe = (req, res) => {
   // eski tarif nesnesini güncelle
   const updated = { ...req.foundRecipe, ...req.body };
-
   // güncellenecek elemanın sırasını bul
   const index = data.findIndex((i) => i.id === req.params.id);
 
