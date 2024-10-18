@@ -1,15 +1,26 @@
 import Select from "react-select/creatable";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import api from "../api/index";
+import { toast } from "react-toastify";
 
 const Create = () => {
+  const navigate = useNavigate();
   const [ingredients, setIngredients] = useState([]);
 
   //api isteği
-  useMutation({
+  const { isLoading, mutate } = useMutation({
     mutationFn: (newRecipe) => api.post("/api/v1/recipes", newRecipe),
+
+    onSuccess: () => {
+      toast.success("Yeni Tarif Oluşturuldu!");
+      navigate("/");
+    },
+
+    onError: () => {
+      toast.error("Tarif Oluşturulamadı!!!");
+    },
   });
 
   // form gönderilince
@@ -27,6 +38,7 @@ const Create = () => {
     newRecipe.ingredients = ingredients;
 
     //api'ye istek at
+    mutate(newRecipe);
   };
   // console.log(ingredients);
 
@@ -72,7 +84,11 @@ const Create = () => {
           <Link to={"/"} className="btn">
             Geri
           </Link>
-          <button type="submit" className="btn bg-red-400 hover:bg-red-500">
+          <button
+            disabled={isLoading}
+            type="submit"
+            className="btn bg-red-400 hover:bg-red-500"
+          >
             Oluştur
           </button>
         </div>
