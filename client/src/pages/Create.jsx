@@ -50,15 +50,15 @@ const Create = () => {
         className="my-5 flex flex-col gap-7 max-w-2xl mx-auto"
       >
         <Field label={"Başlık"}>
-          <input className="input" name="recipeName" />
+          <input className="input" name="recipeName" required />
         </Field>
 
         <Field label={"Kategori"}>
-          <input className="input" name="category" />
+          <input className="input" name="category" required/>
         </Field>
 
         <Field label={"Süre"}>
-          <input className="input" name="recipeTime" />
+          <input className="input" name="recipeTime" required/>
         </Field>
         <Field label={"Malzemeler"}>
           <Select
@@ -66,12 +66,14 @@ const Create = () => {
             onChange={(options) =>
               setIngredients(options.map((opt) => opt.value))
             }
+            required
           />
         </Field>
         <Field label={"Tarif Adımları (, ile ayırın)"}>
           <textarea
             name="instructions"
             className="input min-h-[80px] max-h-[200px]"
+            required
           ></textarea>
         </Field>
         <Field label={"Sunum Önerisi"}>
